@@ -45,6 +45,8 @@ public class LinkedList {
         }
 
         if(x.next != null) x.next.prev = x.prev ;
+
+        this.numel--;
     }
 
     public void PrintAll(){
@@ -56,6 +58,10 @@ public class LinkedList {
         }
 
         System.out.print("]\n");
+    }
+
+    public boolean isEmpty(){
+        return this.numel == 0;
     }
     
 }
