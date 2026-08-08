@@ -18,7 +18,7 @@ public class SortingTest {
 
         System.out.println(Arrays.toString(a));
 
-        sorter.SelectionSort(a);
+        sorter.MergeSort(a, 0, a.length - 1);
 
         System.out.println(Arrays.toString(a));
 

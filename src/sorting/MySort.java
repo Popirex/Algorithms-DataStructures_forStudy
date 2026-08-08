@@ -36,7 +36,18 @@ public class MySort {
         return a;
     }
 
-    
+
+    // recursive MergeSort
+    public void MergeSort(int[] a,int  p,int  r){
+
+        if( p < r){
+            int q = ( (p + r) / 2);
+            MergeSort(a, p, q);
+            MergeSort(a, q+1, r);
+            Merge(a, p, q, r);
+        }
+
+    }
 
     // class of helper funtions that i need for some sorting algorithms:
 
@@ -44,6 +55,50 @@ public class MySort {
         int val = a[i];
         a[i] = a[j];
         a[j] = val;
+    }
+
+    public void Merge(int[] a , int p, int q, int r){
+        int n1 = q - p + 1;
+        int n2 = r - q;
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+        for(int i = 0; i < n1; i++) L[i] = a[p + i] ;
+        for(int j = 0; j < n2; j++) R[j] = a[q  +1 + j] ;
+        int i = 0;
+        int j = 0;
+
+        for(int k = p; k <= r; k++){
+
+            if(i < n1){
+                if( j < n2){
+                    if(L[i] <= R[j]){
+                        CopyFromL(a, L, i, k);
+                        i++;
+                    }
+                    else{
+                        CopyFromR(a, R, j, k);
+                        j++;
+                    }
+                }
+                else{CopyFromL(a, L, i, k);
+                    i++;
+                }
+            }
+            else{
+                CopyFromR(a, R, j, k);
+                j++;
+            }
+
+        }
+
+    }
+
+    public void CopyFromR(int[] A,int[] R, int j,int k){
+        A[k] = R[j];
+    }
+
+    public void CopyFromL(int[] A , int[] L, int i , int k){
+        A[k] = L[i];
     }
 
 }
