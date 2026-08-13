@@ -11,14 +11,16 @@ public class SortingTest {
         MySort sorter = new MySort(); // the sorter, an object that sorts arrays.
 
       int[] a = new int[size];
+      int[] b = new int[size];
+
       for(int i = 0; i < size; i++){
           a[i] = abs(r.nextInt() % 100);
       }
       System.out.println(Arrays.toString(a));
 
-      sorter.QuickSort(a, 0, a.length - 1);
+      sorter.CountingSort(a, b, 100);
 
-        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(b));
 
 
 

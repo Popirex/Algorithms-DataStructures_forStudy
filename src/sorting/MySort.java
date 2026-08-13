@@ -58,7 +58,17 @@ public class MySort {
         }
     }
 
-    
+    public void CountingSort(int[] A, int[] B, int k){ // where k is the biggest element we can encounter
+        int[] C = new int[k+1];
+        for(int i = 0; i <= k ; i++) C[i] = 0;
+        for(int j = 0; j < A.length; j++) C[A[j]]++;
+        for(int i = 1; i <= k; i++) C[i] = C[i] + C[i - 1];
+        for(int j = A.length - 1; j >= 0; j--){
+            B[C[A[j]] - 1] = A[j];
+            C[A[j]]--;
+        }
+
+    }
 
     // class of helper funtions that i need for some sorting algorithms:
 
