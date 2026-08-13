@@ -49,6 +49,17 @@ public class MySort {
 
     }
 
+
+    public void QuickSort(int[] A, int p, int r){
+        if( p < r){
+            int q = Partition(A, p, r);
+            QuickSort(A, p, q - 1);
+            QuickSort(A, q + 1, r);
+        }
+    }
+
+    
+
     // class of helper funtions that i need for some sorting algorithms:
 
     public void SwapValue(int[] a, int i, int j){
@@ -99,6 +110,21 @@ public class MySort {
 
     public void CopyFromL(int[] A , int[] L, int i , int k){
         A[k] = L[i];
+    }
+
+    public int Partition(int[] A, int p, int r){
+        int x = A[r];
+        int i = p - 1;
+
+        for(int j = p; j <= r - 1; j++){
+            if(A[j] <= x){
+                i++;
+                SwapValue(A, i, j);
+            }
+        }
+        SwapValue(A, i + 1, r);
+        return i + 1;
+
     }
 
 }
